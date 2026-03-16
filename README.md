@@ -71,6 +71,9 @@ plugins:
         section_title: 'Categories'
         no_nav: false
         category_separator: '|'
+        show_breadcrumbs: false
+        breadcrumb_separator: '>'
+        disable_categories_section: false
 ```
 
 ### `generate_index`
@@ -116,6 +119,18 @@ This string is used to split the category name in order to define a category hie
 **Default:** `False`
 
 When set to true, breadcrumb links to each category in the category's lineage are displayed. The breadcrumb separator string may be customized by setting the `breadcrumb_separator` option to the desired string (the default is ">").
+
+### `breadcrumb_separator`
+
+**Default:** `>`
+
+Sets the separator to use for breadcrumbs.
+
+### `disable_categories_section`
+
+**Default:** `False`
+
+When set to true, disables the appending of the Categories h2 header on the markdown pages.
 
 ## Troubleshooting
 
