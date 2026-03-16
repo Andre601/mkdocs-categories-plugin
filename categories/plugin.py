@@ -57,6 +57,7 @@ class CategoriesPlugin(BasePlugin):
         ("debug_fs", config_options.Type(bool, default=False)),
         ("show_breadcrumbs", config_options.Type(bool, default=False)),
         ("breadcrumb_separator", config_options.Type(str, default=">")),
+        ("disable_categories_section", config_options.Type(bool, default=False),
     )
     log: Logger = getLogger(f"mkdocs.plugins.{__name__}")
     categories: dict = {}
@@ -126,7 +127,7 @@ class CategoriesPlugin(BasePlugin):
                 natsorted(self.pages[page.file.src_uri]),
             )
         )
-        return markdown + f"\n## {self.config['section_title']}\n\n" + "\n".join(links)
+        return markdown + (f"\n## {self.config['section_title']}\n\n" + "\n".join(links) if not self.config["disable_categories_section"] else "")
 
     def get_breadcrumb_keys(self, category_key: str) -> list[str]:
         """Return category lineage keys from root to the given category."""
