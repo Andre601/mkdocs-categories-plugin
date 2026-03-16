@@ -108,6 +108,8 @@ class CategoriesPlugin(BasePlugin):
 
     def on_page_markdown(self, markdown: str, /, *, page: Page, **_):
         """Appends the category links section for a page to the markdown."""
+        if self.config.get("disable_categories_section", False):
+            return markdown
         relative_url = get_relative_url(str(self.cat_path), page.file.src_uri)
         if page.file.src_uri not in self.pages:
             return markdown
@@ -127,7 +129,7 @@ class CategoriesPlugin(BasePlugin):
                 natsorted(self.pages[page.file.src_uri]),
             )
         )
-        return markdown + (f"\n## {self.config['section_title']}\n\n" + "\n".join(links) if not self.config["disable_categories_section"] else "")
+        return markdown + f"\n## {self.config['section_title']}\n\n" + "\n".join(links)
 
     def get_breadcrumb_keys(self, category_key: str) -> list[str]:
         """Return category lineage keys from root to the given category."""
