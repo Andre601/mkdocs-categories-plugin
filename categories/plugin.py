@@ -57,7 +57,7 @@ class CategoriesPlugin(BasePlugin):
         ("debug_fs", config_options.Type(bool, default=False)),
         ("show_breadcrumbs", config_options.Type(bool, default=False)),
         ("breadcrumb_separator", config_options.Type(str, default=">")),
-        ("disable_categories_section", config_options.Type(bool, default=False),
+        ("disable_categories_section", config_options.Type(bool, default=False)),
     )
     log: Logger = getLogger(f"mkdocs.plugins.{__name__}")
     categories: dict = {}
