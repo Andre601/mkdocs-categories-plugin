@@ -248,7 +248,7 @@ class CategoriesPlugin(BasePlugin):
             file.write(
                 "# All Categories\n\n"
                 "\n"
-                f"There are a total of {len(self.categories.keys())} categories(s):\n"
+                f"There are a total of {len(self.categories.keys())} categories:\n"
                 "\n"
                 f"{joined}\n"
             )
@@ -313,7 +313,7 @@ class CategoriesPlugin(BasePlugin):
                 file.write(
                     "".join(
                         [
-                            f"# Category: {category['name']}\n\n",
+                            f"# {category['name']}\n\n",
                             (f"Parent category: {parent}\n\n" if parent else ""),
                             (
                                 f"## Subcategories\n\n{children}\n\n"
